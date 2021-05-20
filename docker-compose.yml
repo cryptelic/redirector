@@ -1,0 +1,17 @@
+version: "3.7"
+
+services:
+  redirector:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: base
+    volumes:
+      - ./src:/home/node/app/src
+      - ./dist:/home/node/app/dist
+    container_name: im-redirector
+    expose:
+      - "80"
+    ports:
+      - "4000:80"
+    command: npm start
